@@ -1,2 +1,2 @@
-# note-taking-application
- A note taking application using CRUD
+# BCIT 3294 - Notes Application
+- Add documentation below 
