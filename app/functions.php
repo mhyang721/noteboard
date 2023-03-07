@@ -44,4 +44,20 @@ function dd($data) {
 }
 
 // Add Database Connection function here
-// ----------
+function db_connect() {
+
+    $host = "localhost";
+    $username = "notes_app_user";
+    $password = "!k+Y2J";
+    $db_name = "notes_app";
+
+    $db = new mysqli($host, $username, $password, $db_name);
+
+    if($db->connect_errno) {
+        echo "Failed to connect to MySQL: " . $db-> connect_error;
+        exit();
+    }
+
+    return $db;
+
+}
