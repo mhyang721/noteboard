@@ -1,6 +1,8 @@
 <?php
 
-require('../app/init.php');
+    require('../app/init.php');
+
+    $notes = Note::find_all();
 
 ?>
 <!DOCTYPE html>
