@@ -53,19 +53,9 @@ require('../app/init.php');
 
                 <!-- Index Loop -->
                 <div class="grid gap-6 grid-cols-12 mt-6">
-                    <article class="col-span-4">
-                        <div class="rounded overflow-hidden shadow-lg border">
-                            <div class="px-6 py-4">
-                                <div class="flex items-center">
-                                    <h3 class="font-bold text-2xl mb-1 flex-grow">Name</h3>
-                                    <span class="text-white rounded-full text-sm bg-green-500 px-3 py-1">MDIA 3294</span>
-                                    <a href="<?php echo get_public_url('/notes/edit.php'); ?>" class="text-white rounded-full text-sm bg-purple-500 px-3 py-1 ml-2">Edit</a>
-                                    <a href="<?php echo get_public_url('/notes/delete.php'); ?>" class="text-white rounded-full text-sm bg-red-500 px-3 py-1 ml-2">Delete</a>
-                                </div>
-                                <p class="text-xl my-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident, soluta? Lorem ipsum dolor sit. </p>
-                            </div>
-                        </div>
-                    </article>
+                    <?php while($note = $notes->fetch_assoc()):
+                        include(get_path('public/partials/notes/card.php'));
+                    endwhile; ?>
                 </div>
                 <!-- End: Index Loop -->
 
