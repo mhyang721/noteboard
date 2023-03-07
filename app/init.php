@@ -1,6 +1,6 @@
 <?php 
     
-    define('WWW_ROOT', 'http://localhost');
+    define('WWW_ROOT', 'http://localhost:8888');
     define('PROJECT_ROOT', dirname(__DIR__, 1));
 
     // Add Database Constants
@@ -12,5 +12,12 @@
     // Include functions
     require('functions.php');
 
+    // Include Note Class
+    require(get_path('app/Classes/Note.php'));
+
     // Connect to the database
     $db = db_connect();
+
+    // Run a method of the class
+    // Pass in our connection to the database
+    Note::set_db($db);
