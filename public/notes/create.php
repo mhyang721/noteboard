@@ -2,6 +2,20 @@
 
     require('../../app/init.php');
 
+    // Check if data has been submitted to a page
+    if($_SERVER['REQUEST_METHOD'] === "POST") {
+        
+        // Create a new todo object from the form data
+        $note = new Note($_POST);
+
+        // Call the create method that runs the SQL on the db
+        $note->create();
+
+        // Redirect to the home page.
+        redirect("/");
+        
+    }
+
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
@@ -56,35 +70,35 @@
                 <div class="grid grid-cols-12 mt-10">
                     <div class="col-span-12">
 
-                        <form>
+                        <form action="<?php echo get_public_url('/notes/create.php'); ?>" method="POST">
 
                             <!-- Sample tailwind text:input -->
                             <div class="mb-4">
-                                <label class="block text-sm font-bold mb-2">Name</label>
-                                <input class="shadow border rounded w-full py-2 px-3 text-gray-700">
+                                <label class="block text-sm font-bold mb-2" for="note_name">Name</label>
+                                <input class="shadow border rounded w-full py-2 px-3 text-gray-700" id="note_name" type="text" name="name">
                             </div>
                             <!-- End Sample tailwind text:input -->
 
                             <!-- Sample tailwind textarea -->
                             <div class="mb-4">
-                                <label class="block text-sm font-bold mb-2">Body</label>
-                                <textarea class="shadow border rounded w-full py-2 px-3 text-gray-700  h-28"></textarea>
+                                <label class="block text-sm font-bold mb-2" for="note_body">Body</label>
+                                <textarea class="shadow border rounded w-full py-2 px-3 text-gray-700  h-28" id="note_body" name="body"></textarea>
                             </div>
                             <!-- End Sample tailwind textarea -->
 
                             <!-- Sample tailwind select -->
                             <div class="mb-4">
-                                <label class="block text-sm font-bold mb-2">Course Number</label>
-                                <select class="shadow border rounded w-full py-2 px-3 text-gray-700 bg-white">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                </select>
+                                <label class="block text-sm font-bold mb-2" for="note_course_number">Course Number</label>
+                                <input class="shadow border rounded w-full py-2 px-3 text-gray-700 bg-white" id="note_course_number" type="text" name="course_number">
+                                    <!-- <option>Option 1</option>
+                                    <option>Option 2</option> -->
+                                <!-- </select> -->
                             </div>
                             <!-- End Sample tailwind select -->
 
 
                             <!-- Sample tailwind button -->
-                            <button class="bg-emerald-500 rounded-full py-2 px-4 text-white font-bold">Save</button>
+                            <button class="bg-emerald-500 rounded-full py-2 px-4 text-white font-bold" type="submit">Save</button>
                             <!-- End Sample tailwind button -->
 
                         </form>
