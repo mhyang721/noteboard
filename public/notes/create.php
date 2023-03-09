@@ -3,10 +3,13 @@
     require('../../app/init.php');
 
     // Check if data has been submitted to a page
-    if($_SERVER['REQUEST_METHOD'] === "POST") {
+    if(is_post_request()) {
         
         // Create a new todo object from the form data
         $note = new Note($_POST);
+
+        // echo wrap_pre($note);
+        // dd($_POST);
 
         // Call the create method that runs the SQL on the db
         $note->create();

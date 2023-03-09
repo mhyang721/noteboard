@@ -43,6 +43,11 @@ function dd($data) {
     die();
 }
 
+// This function will return if a POST request has been sent
+function is_post_request() {
+    return $_SERVER[ 'REQUEST_METHOD'] === 'POST';
+}
+
 // Add Database Connection function here
 function db_connect() {
 
