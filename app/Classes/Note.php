@@ -17,7 +17,7 @@
 		static public function find_all() {
 
 			// Get all entries with all data from notes table
-			$sql = "SELECT * FROM notes";
+			$sql = "SELECT * FROM Notes";
 
 			// Run the query above on the db connection
 			$result = self::$db->query($sql);
@@ -35,14 +35,51 @@
 		}
 
 		public function create() {
-            $sql = "INSERT INTO notes (name, body, course_number) VALUES ";
-            $sql .= "( '{$this->name}','{$this->body}','{$this->course_number}' )";
+            $sql = "INSERT INTO Notes (name, body, course_number)";
+            $sql .= " VALUES ( '{$this->name}','{$this->body}','{$this->course_number}' )";
 
             $result = self::$db->query($sql);
 
             return $result;
         }
+
+		static public function find($id) {
+ 
+			$sql = "SELECT * FROM Notes ";
+			$sql .= "WHERE id='{$id}'";
+ 
+			$result = self::$db->query($sql);
+
+			return $result->fetch_assoc();
+ 
+		}
+		
+		public function update() {
+ 
+			$sql = "UPDATE Notes SET ";
+				$sql .= "name='{$this->name}', ";
+				$sql .= "body='{$this->body}', ";
+				$sql .= "course_number='{$this->course_number}' ";
+			$sql .= "WHERE id='{$this->id}' ";
+			$sql .= "LIMIT 1";
+ 
+			$result = self::$db->query($sql); 
+			
+			return $result;
+ 
+		}
+
+		public function delete() {
+ 
+			$sql = "DELETE FROM Notes ";
+			$sql .= "WHERE id='{$this->id}' ";
+			$sql .= "LIMIT 1";
+ 
+			$result = self::$db->query($sql); 
+			
+			return $result;
+ 
+		}		
  
 	}               
  
-?>

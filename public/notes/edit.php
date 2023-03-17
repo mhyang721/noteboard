@@ -2,6 +2,19 @@
 
     require('../../app/init.php');
 
+    $id = $_GET['id'] ?? null;
+ 
+	$note = Note::find($id);
+
+    if(is_post_request()) {
+	
+        $note = new Note($_POST);
+        $note->update();
+     
+        redirect('/');
+     
+    }
+
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
@@ -46,7 +59,7 @@
                     <div class="col-span-12 flex items-center">
                         <div class="flex-grow">
                             <p class="text-slate-400"><a class="text-purple-500" href="<?php echo get_public_url('/'); ?>">My Notes</a> / <span>Edit Note</span></p>
-                            <h1 class="font-bold text-4xl mt-2">Edit: {{ ADD NAME }}</h1>
+                            <h1 class="font-bold text-4xl mt-2">Edit: <?php echo h($note['name']); ?></h1>
                         </div>
                     </div>
                 </div>
@@ -56,31 +69,29 @@
                 <div class="grid grid-cols-12 mt-10">
                     <div class="col-span-12">
 
-                        <form>
+                        <form action="<?php echo get_public_url('/notes/edit.php?id=' . h($note['id'])); ?>" method="POST">
 
+                            <input type="hidden" name="id" value="<?php echo h($note['id']); ?>">
                             <!-- Sample tailwind text:input -->
                             <div class="mb-4">
-                                <label class="block text-sm font-bold mb-2">Name</label>
-                                <input class="shadow border rounded w-full py-2 px-3 text-gray-700">
+                                <label class="block text-sm font-bold mb-2" for="note_name">Name</label>
+                                <input class="shadow border rounded w-full py-2 px-3 text-gray-700" id="note_name" type="text" name="name" value="<?php echo h($note['name']); ?>">
                             </div>
                             <!-- End Sample tailwind text:input -->
 
                             <!-- Sample tailwind textarea -->
                             <div class="mb-4">
-                                <label class="block text-sm font-bold mb-2">Body</label>
-                                <textarea class="shadow border rounded w-full py-2 px-3 text-gray-700  h-28"></textarea>
+                                <label class="block text-sm font-bold mb-2" for="note_body">Body</label>
+                                <textarea class="shadow border rounded w-full py-2 px-3 text-gray-700  h-28" id="note_body" name="body"><?php echo h($note['body']); ?></textarea>
                             </div>
                             <!-- End Sample tailwind textarea -->
 
-                            <!-- Sample tailwind select -->
+                            <!-- Sample tailwind text:input -->
                             <div class="mb-4">
-                                <label class="block text-sm font-bold mb-2">Course Number</label>
-                                <select class="shadow border rounded w-full py-2 px-3 text-gray-700 bg-white">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                </select>
+                                <label class="block text-sm font-bold mb-2" for="note_course_number">Course Number</label>
+                                <input class="shadow border rounded w-full py-2 px-3 text-gray-700 bg-white" id="note_course_number" type="text" name="course_number" value="<?php echo h($note['course_number']); ?>">
                             </div>
-                            <!-- End Sample tailwind select -->
+                            <!-- End Sample tailwind text:input -->
 
                             <!-- Sample tailwind button -->
                             <button class="bg-emerald-500 rounded-full py-2 px-4 text-white font-bold">Save</button>

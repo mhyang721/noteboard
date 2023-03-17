@@ -5,7 +5,7 @@
     // Check if data has been submitted to a page
     if(is_post_request()) {
         
-        // Create a new todo object from the form data
+        // Create a new note object from the form data
         $note = new Note($_POST);
 
         // echo wrap_pre($note);
@@ -74,7 +74,7 @@
                     <div class="col-span-12">
 
                         <form action="<?php echo get_public_url('/notes/create.php'); ?>" method="POST">
-
+                    
                             <!-- Sample tailwind text:input -->
                             <div class="mb-4">
                                 <label class="block text-sm font-bold mb-2" for="note_name">Name</label>
@@ -89,13 +89,11 @@
                             </div>
                             <!-- End Sample tailwind textarea -->
 
-                            <!-- Sample tailwind select -->
+                            <!-- Sample tailwind text:input -->
                             <div class="mb-4">
                                 <label class="block text-sm font-bold mb-2" for="note_course_number">Course Number</label>
                                 <input class="shadow border rounded w-full py-2 px-3 text-gray-700 bg-white" id="note_course_number" type="text" name="course_number">
-                                    <!-- <option>Option 1</option>
-                                    <option>Option 2</option> -->
-                                <!-- </select> -->
+                                <!-- End Sample tailwind text:input -->
                             </div>
                             <!-- End Sample tailwind select -->
 

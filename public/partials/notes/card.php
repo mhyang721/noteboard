@@ -1,13 +1,16 @@
-<article class="col-span-4">
-    <div class="rounded overflow-hidden shadow-lg border">
-        <div class="px-6 py-4">
-            <div class="flex items-center">
+<article class="col-span-12 md:col-span-6 lg:col-span-4">
+    <div class="rounded overflow-hidden shadow-lg border border-pink">
+        <div class="px-6 py-6">
+            <!-- <div class="flex items-center"> -->
+            <div class="flex flex-col items-center">
+                <div class="flex mt-2 mb-8">
+                    <a href="<?php echo get_public_url('/notes/edit.php?id=' . h($note['id'])); ?>" class="text-white rounded-full text-sm bg-lt-blue px-3 py-1">Edit</a>
+                    <a href="<?php echo get_public_url('/notes/delete.php?id=' . h($note['id'])); ?>" class="text-white rounded-full text-sm bg-pink px-3 py-1 ml-4">Delete</a>
+                </div>
                 <h3 class="font-bold text-2xl mb-1 flex-grow"><?php echo h($note['name']); ?></h3>
-                <span class="text-white rounded-full text-sm bg-green-500 px-3 py-1">MDIA 3294</span>
-                <a href="<?php echo get_public_url('/notes/edit.php?id=' . u($note['id'])); ?>" class="text-white rounded-full text-sm bg-purple-500 px-3 py-1 ml-2">Edit</a>
-                <a href="<?php echo get_public_url('/notes/delete.php?id=' . u($note['id'])); ?>" class="text-white rounded-full text-sm bg-red-500 px-3 py-1 ml-2">Delete</a>
+                <p class="text-xl my-4"><?php echo h($note['body']); ?></p>
+                <span class="text-navy text-center font-medium rounded w-full text-sm bg-periwinkle px-3 py-1 mt-6"><?php echo h($note['course_number']); ?></span>
             </div>
-            <p class="text-xl my-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident, soluta? Lorem ipsum dolor sit. </p>
         </div>
     </div>
 </article>

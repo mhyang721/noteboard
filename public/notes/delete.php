@@ -2,6 +2,21 @@
 
   require('../../app/init.php');
 
+  $id = $_GET['id'] ?? '';
+  $note = Note::find($id);
+  $note_record = Note::find($id);
+
+  if(is_post_request()) {
+
+    $note_record = Note::find($_POST['id']);
+    $note = new Note($note_record);
+
+    $note->delete();
+
+    redirect('/');
+
+  }
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +61,7 @@
                 <div class="col-span-12 flex items-center">
                     <div class="flex-grow">
                         <p class="text-slate-400"><a class="text-purple-500" href="<?php echo get_public_url('/'); ?>">My Notes</a > / <span>Delete Note</span></p>
-                        <h1 class="font-bold text-4xl mt-2">Delete: {{ NOTE NAME }}</h1>
+                        <h1 class="font-bold text-4xl mt-2">Delete: <?php echo h($note['name']); ?></h1>
                     </div>
                 </div>
             </div>
@@ -55,9 +70,9 @@
             <!-- Delete Form -->
             <div class="grid grid-cols-12 mt-10">
                 <div class="col-span-12">
-                    <form>
-                        <p class="mb-4">Are you sure you want to delete <strong class="font-bold">NOTE NAME</strong>?</p>
-                        <input value="NOTE ID">
+                    <form action="<?php echo get_public_url('/notes/delete.php?id=' . h($note_record['id'])); ?>" method="POST">
+                        <p class="mb-4">Are you sure you want to delete <strong class="font-bold"><?php echo h($note_record['name']); ?></strong>?</p>
+                        <input type="hidden" name="id" value="<?php echo h($note_record['id']); ?>">
                         <button class="bg-red-500 rounded-full py-2 px-4 text-white font-bold">Yes, I'm sure</button>
                     </form>
                 </div>
