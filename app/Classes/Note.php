@@ -30,7 +30,11 @@
 		public function __construct($args) {
 			$this->id = $args['id'] ?? NULL;
 			$this->name = $args['name'] ?? NULL;
-			$this->body = $args['body'] ?? NULL;
+
+			// mysqli_escape_string is a prebuilt function that is used to modify a string value
+			// it allows special characters to be interpreted as part of the string
+			// so that things like apostrophes don't cause syntax errors in the SQL query
+			$this->body = mysqli_escape_string(self::$db, $args['body']) ?? NULL;
 			$this->course_number = $args['course_number'] ?? NULL;
 		}
 
