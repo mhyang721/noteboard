@@ -3,6 +3,8 @@
 // User-Defined Functions
 // ----------
 
+// Returns a URL to a path
+// Adds a leading '/' if one has not been provided.
 function get_public_url($path = "") {
     if($path[0] != '/') {
         $path = '/' . $path;
@@ -10,6 +12,8 @@ function get_public_url($path = "") {
     return WWW_ROOT . '/public' . $path;
 }
 
+// Returns the location on the server to a path
+// Adds a leading '/' if one has not been provided.
 function get_path($path = "") {
     if ($path != "") {
         if($path[0] != '/') {
@@ -19,18 +23,20 @@ function get_path($path = "") {
     return PROJECT_ROOT . $path;
 }
 
+// redirects to a given URL via the get_url function
 function redirect($path) {
     header('Location: ' . get_public_url($path) );
 }
 
+// Return special characters as HTML entities for security
 function h($str) {
     return htmlspecialchars($str);
 }
 
+// Returns a URL safe string
 function u($string) {
     return urlencode($string);
 }
-
 
 // Prints out human readable data wrapped in <pre> tags, for debugging
 function wrap_pre($data) {
@@ -48,21 +54,30 @@ function is_post_request() {
     return $_SERVER[ 'REQUEST_METHOD'] === 'POST';
 }
 
-// Add Database Connection function here
+// Database Connection function
 function db_connect() {
 
+    // The variables we need to connect to our database
     $host = "localhost";
     $username = "notes_app_user";
     $password = "!k+Y2J";
     $db_name = "notes_app";
 
+    // Built-in function
+    // Creates a new instance of the mysqli class to connect to our database
+    // Passes the variables we defined above as the parameters
     $db = new mysqli($host, $username, $password, $db_name);
 
+    // Checks if there are any errors while connecting to the database
+    // exit() is a built-in function that prints a message to the screen and
+    // terminates the current script if an error is found
     if($db->connect_errno) {
         echo "Failed to connect to MySQL: " . $db-> connect_error;
         exit();
     }
 
+    // If there are no errors, this creates a connection to our database
     return $db;
 
+    // now the $db object can be used to interact with our database
 }

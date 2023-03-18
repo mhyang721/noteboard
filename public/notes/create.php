@@ -7,15 +7,15 @@
     if(is_post_request()) {
         
         // Create a new note object from the form data
+        // $_POST = PHP super global variable
+        // It collects form data after subitting an HTML form with the method="post"
+        // The information is passed via key/value pairs
         $note = new Note($_POST);
 
-        // echo wrap_pre($note);
-        // dd($_POST);
-
-        // Call the create method that runs the SQL on the db
+        // Call the create method 
         $note->create();
 
-        // Redirect to the home page.
+        // Redirect to the home page
         redirect("/");
         
     }
@@ -51,11 +51,15 @@
                 <div class="grid grid-cols-12 mt-10">
                     <div class="col-span-12">
 
+                            <!-- Add 'action' attribute so the form knows where to send data -->
+                            <!-- Add 'method' attribute to specify the HTTP method used to send form data (either GET or POST) -->
                         <form action="<?php echo get_public_url('/notes/create.php'); ?>" method="POST">
                     
                             <!-- Text:input -->
                             <div class="mb-8">
+                                    <!-- Add 'for' attribute -->
                                 <label class="block text-md font-bold mb-4" for="note_name">Name</label>
+                                    <!-- Add id and 'name' attribute -->
                                 <input class="shadow border rounded w-full py-2 px-3 text-navy/60" id="note_name" type="text" name="name">
                             </div>
                             <!-- End text:input -->

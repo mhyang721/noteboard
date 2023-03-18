@@ -3,15 +3,25 @@
     require('../../app/init.php');
     $title_tag = "Edit Note";
 
+    // Checks if an id was passed in the url via the $_GET superglobal
+    // If no value was assigned to id, it will be null
     $id = $_GET['id'] ?? null;
  
+    // Call our find() method to retrieve the note from our database with the matching id value
 	$note = Note::find($id);
 
+    // If the form was submitted using $_POST,
     if(is_post_request()) {
 	
+        // the data from the form will be used to create a new Note object
+        // This new Note object is just a containerto hold the
+        // updated data that will be used to update the existing note
         $note = new Note($_POST);
+
+        // Now we update the existing note
         $note->update();
      
+        // Redirect to the homepage
         redirect('/');
      
     }

@@ -1,23 +1,25 @@
 <?php 
     
+    // Define Path Constants
     define('WWW_ROOT', 'http://localhost:8888');
     define('PROJECT_ROOT', dirname(__DIR__, 1));
 
-    // Add Database Constants
+    // Define Database Constants
     define('DB_HOST', 'localhost');
     define('DB_USER', 'notes_app_user');
     define('DB_PASS', '!k+Y2J');
     define('DB_DATABASE', 'notes_app');
 
-    // Include functions
+    // Include Functions
     require('functions.php');
 
-    // Include Note Class
+    // Require Classes
     require(get_path('app/Classes/Note.php'));
 
     // Connect to the database
     $db = db_connect();
 
-    // Run a method of the class
-    // Pass in our connection to the database
+    // set_db() is a static method of the Note class
+    // Sets the $db object as a static property of the Note class
+    // Allows any method of the Note class to access the database connection
     Note::set_db($db);

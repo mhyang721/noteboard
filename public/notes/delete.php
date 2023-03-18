@@ -1,22 +1,32 @@
 <?php
 
-  require('../../app/init.php');
-  $title_tag = "Delete Note";
+    require('../../app/init.php');
+    $title_tag = "Delete Note";
 
-  $id = $_GET['id'] ?? '';
-  $note = Note::find($id);
-  $note_record = Note::find($id);
+    // GET requests pass information via the url
+    $id = $_GET['id'] ?? '';
 
-  if(is_post_request()) {
+    // Call our find() method to retrieve the note from our database with the matching id value
+    $note = Note::find($id);
+    
+    // This $note_record stores the note we intend to delete
+    // with the matching id value from the Notes table in our database
+    $note_record = Note::find($id);
 
+    if(is_post_request()) {
+
+    // This $note_record is updated based on the id from the form submission POST method
     $note_record = Note::find($_POST['id']);
+
     $note = new Note($note_record);
 
+    // Now we delete the existing note
     $note->delete();
 
+    // Redirect to the home page
     redirect('/');
 
-  }
+    }
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -35,7 +45,6 @@
 
             <div class="container mx-auto py-16">
 
-                <!-- Delete Header -->
                 <div class="grid grid-cols-12 border-b pb-6">
                     <div class="col-span-12 flex items-center">
                         <div class="flex-grow">

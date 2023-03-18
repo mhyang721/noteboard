@@ -1,3 +1,4 @@
+<!-- Header section that was separated from the public/index.php file to keep things organized -->
 <div class="border-b border-pink">
     <nav class="flex items-center justify-between py-6 container mx-auto">
         <div class="flex">

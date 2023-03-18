@@ -5,6 +5,8 @@
     require('../app/init.php');
     $title_tag = "Notes Application";
 
+    // find_all() returns an array of Note objects where each object represents a record from the Notes table
+    // The array is assigned to the $notes variable
     $notes = Note::find_all();
 
 ?><!DOCTYPE html>
@@ -35,6 +37,10 @@
 
                 <!-- Index Loop -->
                 <div class="grid gap-6 grid-cols-12 mt-6">
+                        <!-- fetch_assoc() returns each row of data from the database as an associative array -->
+                        <!-- $notes holds the result set or collection of rows -->
+                        <!-- $note holds data for each individual row as it is retrieved -->
+                        <!-- All of this is looped to display each entry of the Notes table from our database -->
                     <?php while($note = $notes->fetch_assoc()):
                         require(get_path('public/partials/notes/card.php'));
                     endwhile; ?>
