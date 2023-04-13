@@ -6,13 +6,21 @@
     // Checks if an id was passed in the url via the $_GET superglobal
     // If no value was assigned to id, it will be null
     $id = $_GET['id'] ?? null;
+    if(!$id) redirect('/');
+
+    // Add user_id var and redirect if not 1
+    $user_id = 1;
+    if($user_id !== 1) redirect('/');
  
-    // Call our find() method to retrieve the note from our database with the matching id value
-	$note = Note::find($id);
+    // Call our find() method to retrieve the note from our database with the matching id & user_id value
+	$note = Note::find($id, $user_id);
 
     // If the form was submitted using $_POST,
     if(is_post_request()) {
 	
+        $args = $_POST;
+        $args['id'] = $id;
+        $args['user_id'] = $user_id;
         // the data from the form will be used to create a new Note object
         // This new Note object is just a containerto hold the
         // updated data that will be used to update the existing note
@@ -24,6 +32,8 @@
         // Redirect to the homepage
         redirect('/');
      
+    } else {
+        $note = Note::find($id, $user_id);
     }
 
 ?><!DOCTYPE html>

@@ -12,6 +12,8 @@
 		public $name;
 		public $body;
 		public $course_number;
+		// add user_id
+		public $user_id;
  
 		// Since $db is protected, we add a static public method
 		// so that it can be called from outside the class
@@ -20,10 +22,10 @@
 		}
 
 		// Returns a results object that we can loop through
-		static public function find_all() {
+		static public function find_all($user_id) {
 
-			// Select all entries from the Notes table
-			$sql = "SELECT * FROM Notes";
+			// Select all entries from the Notes table that belong to a particular user
+			$sql = "SELECT * FROM Notes WHERE user_id = {$user_id}";
 
 			// Run the query above on the db connection
 			$result = self::$db->query($sql);
@@ -47,14 +49,17 @@
 			// so that things like apostrophes don't cause syntax errors in the SQL query
 			$this->body = mysqli_escape_string(self::$db, $args['body']) ?? NULL;
 			$this->course_number = $args['course_number'] ?? NULL;
+			// add user_id to constructor
+			$this->user_id = $args['user_id'] ?? NULL;
 
 		}
 
 		// Method that creates a new record in the Notes table of our database
 		public function create() {
 
-            $sql = "INSERT INTO Notes (name, body, course_number)";
-            $sql .= " VALUES ( '{$this->name}','{$this->body}','{$this->course_number}' )";
+			// Update Notes table column & values to include the new user_id column
+            $sql = "INSERT INTO Notes (name, body, course_number, user_id)";
+            $sql .= " VALUES ( '{$this->name}','{$this->body}','{$this->course_number}','{$this->user_id}' )";
 
             $result = self::$db->query($sql);
 
@@ -64,10 +69,10 @@
 
 		// Method that finds a single record from the Notes table of our database
 		// based on the $id parameter we provide
-		static public function find($id) {
+		static public function find($id, $user_id) {
  
 			$sql = "SELECT * FROM Notes ";
-			$sql .= "WHERE id='{$id}'";
+			$sql .= "WHERE id='{$id}' AND user_id = {$user_id}";
  
 			$result = self::$db->query($sql);
 
@@ -84,12 +89,13 @@
 				$sql .= "body='{$this->body}', ";
 				$sql .= "course_number='{$this->course_number}' ";
 			
-			// $this->id identifies the record that we want to update
-			$sql .= "WHERE id='{$this->id}' ";
+				// $this->id identifies the record that we want to update
+				$sql .= "WHERE id='{$this->id}' ";
+				$sql .= "AND user_id = '{$this->user_id}' ";
 
-			// LIMIT 1 is a clause added to limit the update to only one record
-			// It is a fallback if you forget the WHERE clause
-			$sql .= "LIMIT 1";
+				// LIMIT 1 is a clause added to limit the update to only one record
+				// It is a fallback if you forget the WHERE clause
+				$sql .= "LIMIT 1";
  
 			$result = self::$db->query($sql); 
 			
@@ -101,7 +107,7 @@
 		public function delete() {
  
 			$sql = "DELETE FROM Notes ";
-			$sql .= "WHERE id='{$this->id}' ";
+			$sql .= "WHERE id='{$this->id}' AND user_id ='{$this->user_id}' ";
 			$sql .= "LIMIT 1";
  
 			$result = self::$db->query($sql); 

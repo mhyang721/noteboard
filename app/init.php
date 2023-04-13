@@ -6,8 +6,8 @@
 
     // Define Database Constants
     define('DB_HOST', 'localhost');
-    define('DB_USER', 'notes_app_user');
-    define('DB_PASS', '!k+Y2J');
+    define('DB_USER', 'root');
+    define('DB_PASS', 'root');
     define('DB_DATABASE', 'notes_app');
 
     // Include Functions

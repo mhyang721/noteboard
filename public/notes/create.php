@@ -6,11 +6,13 @@
     // Check if data has been submitted to a page
     if(is_post_request()) {
         
+        $args = $_POST;
+        $args['user_id'] = 1;
         // Create a new note object from the form data
         // $_POST = PHP super global variable
         // It collects form data after subitting an HTML form with the method="post"
         // The information is passed via key/value pairs
-        $note = new Note($_POST);
+        $note = new Note($args);
 
         // Call the create method 
         $note->create();

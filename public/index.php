@@ -7,7 +7,7 @@
 
     // find_all() returns an array of Note objects where each object represents a record from the Notes table
     // The array is assigned to the $notes variable
-    $notes = Note::find_all();
+    $notes = Note::find_all(1);
 
 ?><!DOCTYPE html>
 <html lang="en">
