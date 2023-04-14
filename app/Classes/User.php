@@ -22,7 +22,7 @@
             // ?? = null coalescing operator
             // if $args['id'] does not exist, id of the new User instance will be null
             $this->id = $args['id'] ?? NULL;
-            $this->id = $args['name'] ?? NULL;
+            $this->name = $args['name'] ?? NULL;
             $this->email = $args['email'] ?? NULL;
             $this->password = $args['password'] ?? NULL;
 
@@ -31,13 +31,27 @@
         // Create
         public function create() {
 
-            // PASSWORD_DEFAULT is BCRYPT
+            // Create an encrypted password based on a hashing algorithm that only goes one way
+            // PASSWORD_DEFAULT is bcrypt
             $hashed_password = password_hash($this->password, PASSWORD_DEFAULT);
 
-            $sql = "INSERT INTO Users (email, name, password) VALUES ('{$this->email}', '{$this->name}','{$hashed_password}')";
+            // ? = values to be replaced
+            $sql = "INSERT INTO Users (email, name, password) VALUES (?, ?, ?)";
 
-            $result = self::$db->query($sql);
+            // Prepare the sql statement above to be executed (have the ? replaced)
+            $stmt = self::$db->prepare($sql);
 
+            // Built-in php function to prevent SQL injections
+            // Specify data types and variables of the ? above
+            $stmt->bind_param('sss', $this->email, $this->name, $hashed_password);
+
+            // Run the statement
+            $stmt->execute();
+
+            // Get the results after statement runs
+            $result = $stmt->get_result();
+
+            // Return the results
             return $result;
 
         }
@@ -45,8 +59,14 @@
         // Read: Search the db for a user by email
         static public function find_user_by_email($email) {
 
-            $sql = "SELECT * FROM Users WHERE email='{$email}'";
-            $result = self::$db->query($sql);
+            $sql = "SELECT * FROM Users WHERE email=?";
+
+            $stmt = self::$db->prepare($sql);
+            $stmt->bind_param('s', $email);
+
+            $stmt->execute();
+
+            $result = $stmt->get_result();
 
             return $result;
 

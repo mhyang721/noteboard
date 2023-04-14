@@ -25,13 +25,15 @@
 		static public function find_all($user_id) {
 
 			// Select all entries from the Notes table that belong to a particular user
-			$sql = "SELECT * FROM Notes WHERE user_id = '{$user_id}'";
+			$sql = "SELECT * FROM Notes WHERE user_id = ?";
 
-			// Run the query above on the db connection
-			$result = self::$db->query($sql);
+			$stmt = self::$db->prepare($sql);
+            $stmt->bind_param('i', $user_id);
+            $stmt->execute();
 
-			// Return the result of the query
-			return $result;
+            $result = $stmt->get_result();
+
+            return $result;
 
 		}
 
@@ -58,10 +60,13 @@
 		public function create() {
 
 			// Update Notes table column & values to include the new user_id column
-            $sql = "INSERT INTO Notes (name, body, course_number, user_id)";
-            $sql .= " VALUES ('{$this->name}','{$this->body}','{$this->course_number}','{$this->user_id}')";
+            $sql = "INSERT INTO Notes (name, body, course_number, user_id) VALUES (?, ?, ?, ?)";
 
-            $result = self::$db->query($sql);
+            $stmt = self::$db->prepare($sql);
+            $stmt->bind_param('sssi', $this->name, $this->body, $this->course_number, $this->user_id);
+
+            $stmt->execute();
+            $result = $stmt->get_result();
 
             return $result;
 
@@ -71,47 +76,50 @@
 		// based on the $id parameter we provide
 		static public function find($id, $user_id) {
  
-			$sql = "SELECT * FROM Notes WHERE id='{$id}' AND user_id = '{$user_id}'";
+			$sql = "SELECT * FROM Notes WHERE id= ? AND user_id = ?";
  
-			$result = self::$db->query($sql);
+			$stmt = self::$db->prepare($sql);
+            $stmt->bind_param('ii', $id, $user_id);
+            $stmt->execute();
 
-			return $result->fetch_assoc();
+            $result = $stmt->get_result();
+
+            return $result->fetch_assoc();
 
 		}
 		
 		// Method that updates a single record in the Notes table of our database
-		// based on the values of the instance variables of the Note object
+		// based on the id and user_id
 		public function update() {
- 
-			$sql = "UPDATE Notes SET ";
-				$sql .= "name='{$this->name}', ";
-				$sql .= "body='{$this->body}', ";
-				$sql .= "course_number='{$this->course_number}' ";
 			
-				// $this->id identifies the record that we want to update
-				$sql .= "WHERE id='{$this->id}' ";
-				$sql .= "AND user_id = '{$this->user_id}' ";
+			// LIMIT 1 is a clause added to limit the update to only one record
+			// It is a fallback if you forget the WHERE clause
+			$sql = "UPDATE Notes SET name = ?, body = ?, course_number = ? WHERE id = ? AND user_id = ? LIMIT 1";
 
-				// LIMIT 1 is a clause added to limit the update to only one record
-				// It is a fallback if you forget the WHERE clause
-				$sql .= "LIMIT 1";
- 
-			$result = self::$db->query($sql); 
-			
-			return $result;
+			$stmt = self::$db->prepare($sql);
+            $stmt->bind_param('sssii', $this->name, $this->body, $this->course_number, $this->id, $this->user_id);
+
+            $stmt->execute();
+
+            $result = $stmt->get_result();
+
+            return $result;
  
 		}
 
 		// Method that deletes a single record from the Notes table of our database
 		public function delete() {
- 
-			$sql = "DELETE FROM Notes ";
-			$sql .= "WHERE id='{$this->id}' AND user_id ='{$this->user_id}' ";
-			$sql .= "LIMIT 1";
- 
-			$result = self::$db->query($sql); 
+
+			$sql = "DELETE FROM Notes WHERE id = ? AND user_id = ? LIMIT 1";
 			
-			return $result;
+			$stmt = self::$db->prepare($sql);
+            $stmt->bind_param('ii', $this->id, $this->user_id);
+
+            $stmt->execute();
+
+            $result = $stmt->get_result();
+
+            return $result;
  
 		}		
  

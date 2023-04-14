@@ -34,7 +34,7 @@
         public function get_user_id() {
 
             return $this->user_id;
-            
+
         }
 
         // Logout and remove all the info from the session
@@ -49,7 +49,7 @@
         // Return user to login page if they aren't logged in (if user_id is null)
         public function is_logged_in() {
 
-            if(is_null( $this->get_user_id() )) {
+            if(is_null($this->get_user_id())) {
                 redirect('/users/login.php');
             } else {
                 return true;
