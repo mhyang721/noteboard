@@ -4,6 +4,7 @@
         
         // Properties
         public $user_id;
+        public $errors = [];
 
         // Methods
         public function __construct($args = []) {
@@ -50,11 +51,43 @@
         public function is_logged_in() {
 
             if(is_null($this->get_user_id())) {
-                redirect('/users/login.php');
+                // redirect('/');
             } else {
                 return true;
             }
 
+        }
+
+        // Allow error messages to be displayed across multiples pages
+        public function set_errors($errors_arr) {
+
+            // Stores the error messages in an array
+            $this->errors = $errors_arr;
+
+            // Store errors array in a $_SESSION variable
+            $_SESSION['errors'] = $this->errors;
+
+        }
+
+        // Retrieves and displays error messages in HTML
+        public function get_errors_html() {
+
+            if($this->errors) {
+
+                $html = "<ul class='mb-8 bg-red-500 py-2 px-4 rounded shadow'>";
+
+                    foreach($this->errors as $error) {
+                        $html .= "<li class='text-white'>{$error}</li>";
+                    }
+
+                $html .= "</ul>";
+
+                return $html;
+
+            }
+
+            return "";
+            
         }
 
     }

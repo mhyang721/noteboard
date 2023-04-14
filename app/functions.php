@@ -38,6 +38,14 @@ function u($string) {
     return urlencode($string);
 }
 
+// Checks if a value is blank 
+function is_blank($var) {
+    if(!isset($var) || "" === trim($var, " ") ) {
+        return true;
+    } 
+    return false;
+}
+
 // Prints out human readable data wrapped in <pre> tags, for debugging
 function wrap_pre($data) {
     return '<pre>' . print_r($data,true) . '</pre>';
@@ -52,6 +60,7 @@ function dd($data) {
 // This function will return if a POST request has been sent
 function is_post_request() {
     return $_SERVER[ 'REQUEST_METHOD'] === 'POST';
+    
 }
 
 // Database Connection function

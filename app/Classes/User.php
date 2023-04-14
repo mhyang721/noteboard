@@ -11,6 +11,9 @@
         public $email;
         protected $password;
 
+        // Set errors var
+        public $errors;
+
         // Methods
         static public function set_db($db_conn) {
             self::$db = $db_conn;
@@ -30,6 +33,9 @@
 
         // Create
         public function create() {
+
+            // If this is not valid, don't run the following password hashing
+            if(!$this->validate()) return false;
 
             // Create an encrypted password based on a hashing algorithm that only goes one way
             // PASSWORD_DEFAULT is bcrypt
@@ -77,6 +83,24 @@
         public function validate_password($provided_password) {
 
             return password_verify($provided_password, $this->password);
+
+        }
+
+        // Validate if email and password are filled in
+        public function validate() {
+
+            // Return error message if email is blank
+            if(is_blank($this->email)) {
+                $this->errors[] = "Email cannot be blank";
+            }
+
+            // Return error message if password is blank
+            if(is_blank($this->password)) {
+                $this->errors[] = "Password cannot be blank";
+            }
+
+            // If there are no errors, errors property will be empty
+            return empty($this->errors);
 
         }
         

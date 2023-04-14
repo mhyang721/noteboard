@@ -18,17 +18,21 @@
             // Validate password against the submitted password
             if($user_obj->validate_password($_POST['password'])) {
 
-            // Call the login method of the session object
-            // This saves the id returned from our $user->fetch_assoc() to the session
-            $session->login($user_obj->id);
+                // Call the login method of the session object
+                // This saves the id returned from our $user->fetch_assoc() to the session
+                $session->login($user_obj->id);
 
-            // Redirect to homepage
-            redirect('/');
+                // Redirect to homepage
+                redirect('/');
 
+            // Display error msg if password validation fails
+            } else {
+                $session->set_errors(["Incorrect email and/or password"]);
             }
 
+        // Display msg if user is not found
         } else {
-            dd('User does not exist');
+            $session->set_errors(["Incorrect email and/or password"]);
         }
 
     }
@@ -60,6 +64,9 @@
             <!-- Login Form -->
             <div class="grid grid-cols-12 mt-10">
                 <div class="col-span-12">
+
+                    <!-- Display error message -->
+                    <?php echo $session->get_errors_html(); ?>
 
                     <form action="<?php echo get_public_url('/users/login.php'); ?>" method="POST">
 

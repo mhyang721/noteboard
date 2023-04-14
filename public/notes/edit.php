@@ -29,10 +29,15 @@
         $note = new Note($args);
 
         // Now we update the existing note
-        $note->update();
+        $result = $note->update();
      
-        // Redirect to the homepage
-        redirect('/');
+        // If note created successful, redirect to homepage
+        if($result) {
+            redirect('/');
+        // Otherwise display error message
+        } else {
+            $session->set_errors($note->errors);
+        }
      
     } else {
         $note = Note::find($id, $user_id);
@@ -69,7 +74,10 @@
                 <div class="grid grid-cols-12 mt-10">
                     <div class="col-span-12">
 
-                        <form action="<?php echo get_public_url('/notes/edit.php?id=' . h($note['id'])); ?>" method="POST">
+                        <!-- Display error message -->
+                        <?php echo $session->get_errors_html(); ?>
+                        
+                        <form id="edit-note" action="<?php echo get_public_url('/notes/edit.php?id=' . h($note['id'])); ?>" method="POST">
 
                             <input type="hidden" name="id" value="<?php echo h($note['id']); ?>">
                             <!-- Text:input -->

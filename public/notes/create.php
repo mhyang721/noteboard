@@ -21,10 +21,15 @@
         $note = new Note($args);
 
         // Call the create method 
-        $note->create();
+        $result = $note->create();
 
-        // Redirect to the home page
-        redirect("/");
+        // If note created successful, redirect to homepage
+        if($result) {
+            redirect('/');
+        // Otherwise display error message
+        } else {
+            $session->set_errors($note->errors);
+        }
         
     }
 
@@ -59,9 +64,12 @@
                 <div class="grid grid-cols-12 mt-10">
                     <div class="col-span-12">
 
-                            <!-- Add 'action' attribute so the form knows where to send data -->
-                            <!-- Add 'method' attribute to specify the HTTP method used to send form data (either GET or POST) -->
-                        <form action="<?php echo get_public_url('/notes/create.php'); ?>" method="POST">
+                        <!-- Display error message -->
+                        <?php echo $session->get_errors_html(); ?>
+
+                        <!-- Add 'action' attribute so the form knows where to send data -->
+                        <!-- Add 'method' attribute to specify the HTTP method used to send form data (either GET or POST) -->
+                        <form id="create-note" action="<?php echo get_public_url('/notes/create.php'); ?>" method="POST">
                     
                             <!-- Text:input -->
                             <div class="mb-8">

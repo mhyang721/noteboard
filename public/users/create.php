@@ -7,9 +7,15 @@
         // Create a new User object to create users in the db
         $user = new User($_POST);
         // Call the method
-        $user->create();
+        $result = $user->create();
 
-        redirect('/users/login.php');
+        // If signup successful, redirect users to login page
+        if($result) {
+            redirect('/users/login.php');
+        // Otherwise display error message
+        } else {
+            $session->set_errors($user->errors);
+        }
 
     }
 
@@ -41,8 +47,11 @@
             <div class="grid grid-cols-12 mt-10">
                 <div class="col-span-12">
 
+                    <!-- Display error message -->
+                    <?php echo $session->get_errors_html(); ?>
+
                     <!-- Important to use "POST" method as we are sending sensistive data -->
-                    <form action="<?php echo get_public_url('/users/create.php'); ?>" method="POST">
+                    <form id="sign-up" action="<?php echo get_public_url('/users/create.php'); ?>" method="POST">
                         
                         <div class="mb-4">
                             <!-- Label provides context to the form -->

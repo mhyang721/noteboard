@@ -14,6 +14,9 @@
 		public $course_number;
 		// add user_id
 		public $user_id;
+
+		// Set errors var
+		public $errors;
  
 		// Since $db is protected, we add a static public method
 		// so that it can be called from outside the class
@@ -59,14 +62,17 @@
 		// Method that creates a new record in the Notes table of our database
 		public function create() {
 
+			// If this is not valid, don't run the following password hashing
+            if(!$this->validate()) return false;
+
 			// Update Notes table column & values to include the new user_id column
             $sql = "INSERT INTO Notes (name, body, course_number, user_id) VALUES (?, ?, ?, ?)";
 
             $stmt = self::$db->prepare($sql);
             $stmt->bind_param('sssi', $this->name, $this->body, $this->course_number, $this->user_id);
 
-            $stmt->execute();
-            $result = $stmt->get_result();
+            $result = $stmt->execute();
+            // $stmt->get_result();
 
             return $result;
 
@@ -92,6 +98,9 @@
 		// based on the id and user_id
 		public function update() {
 			
+			// If this is not valid, don't run the following password hashing
+            if(!$this->validate()) return false;
+
 			// LIMIT 1 is a clause added to limit the update to only one record
 			// It is a fallback if you forget the WHERE clause
 			$sql = "UPDATE Notes SET name = ?, body = ?, course_number = ? WHERE id = ? AND user_id = ? LIMIT 1";
@@ -99,9 +108,8 @@
 			$stmt = self::$db->prepare($sql);
             $stmt->bind_param('sssii', $this->name, $this->body, $this->course_number, $this->id, $this->user_id);
 
-            $stmt->execute();
-
-            $result = $stmt->get_result();
+			$result = $stmt->execute();
+            // $stmt->get_result();
 
             return $result;
  
@@ -121,7 +129,26 @@
 
             return $result;
  
-		}		
+		}	
+		
+		
+        // Validate if email and password are filled in
+        public function validate() {
+
+            // Return error message if email is blank
+            if(is_blank($this->name)) {
+                $this->errors[] = "Name cannot be blank";
+            }
+
+            // Return error message if password is blank
+            if(is_blank($this->course_number)) {
+                $this->errors[] = "Course number cannot be blank";
+            }
+
+            // If there are no errors, errors property will be empty
+            return empty($this->errors);
+
+        }
  
 	}               
  
