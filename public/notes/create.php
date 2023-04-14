@@ -3,11 +3,17 @@
     require('../../app/init.php');
     $title_tag = "Create Note";
 
+    // Must be logged in to access this page
+    $session->is_logged_in();
+
     // Check if data has been submitted to a page
     if(is_post_request()) {
         
+        // Will return the user's user_id
+        $user_id = $session->get_user_id();
+
         $args = $_POST;
-        $args['user_id'] = 1;
+        $args['user_id'] = $user_id;
         // Create a new note object from the form data
         // $_POST = PHP super global variable
         // It collects form data after subitting an HTML form with the method="post"

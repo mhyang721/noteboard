@@ -1,13 +1,19 @@
 <?php
 
-// Michelle Yang (A01300572) Assignment 2 - Note-Taking Application
+// Michelle Yang (A01300572) Term Project - Note-Taking Application
 
     require('../app/init.php');
     $title_tag = "Notes Application";
 
+    // Check if user is logged in
+    $session->is_logged_in();
+
+    // Get the current user_id
+    $user_id = $session->get_user_id();
+
     // find_all() returns an array of Note objects where each object represents a record from the Notes table
     // The array is assigned to the $notes variable
-    $notes = Note::find_all(1);
+    $notes = Note::find_all($user_id);
 
 ?><!DOCTYPE html>
 <html lang="en">

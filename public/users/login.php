@@ -16,8 +16,13 @@
             $user_obj = new User($user->fetch_assoc());
             
             // Validate password against the submitted password
-            if( $user_obj->validate_password($_POST['password']) ) {
+            if($user_obj->validate_password($_POST['password'])) {
 
+            // Call the login method of the session object
+            // This saves the id returned from our $user->fetch_assoc() to the session
+            $session->login($user_obj->id);
+
+            // Redirect to homepage
             redirect('/');
 
             }

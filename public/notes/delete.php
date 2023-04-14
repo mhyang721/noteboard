@@ -7,9 +7,11 @@
     $id = $_GET['id'] ?? '';
     if(!$id) redirect('/');
   
-    // Add user_id var and redirect if not 1
-    $user_id = 1;
-    if($user_id !== 1) redirect('/');
+    // Check if user is logged in
+    $session->is_logged_in();
+    
+    // Store the current session user_id in a var
+    $user_id = $session->get_user_id();
 
     // Call our find() method to retrieve the note from our database with the matching id value
     $note = Note::find($id, $user_id);
@@ -20,18 +22,18 @@
 
     if(is_post_request()) {
 
-    $args = $_POST;
-    $args['user_id'] = $user_id;
-    // This $note_record is updated based on the id from the form submission POST method
-    // $note_record = Note::find($_POST['id']);
+        $args = $_POST;
+        $args['user_id'] = $user_id;
+        // This $note_record is updated based on the id from the form submission POST method
+        // $note_record = Note::find($_POST['id']);
 
-    $note = new Note($note_record);
+        $note = new Note($note_record);
 
-    // Now we delete the existing note
-    $note->delete();
+        // Now we delete the existing note
+        $note->delete();
 
-    // Redirect to the home page
-    redirect('/');
+        // Redirect to the home page
+        redirect('/');
 
     }
 

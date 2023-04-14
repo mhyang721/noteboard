@@ -25,7 +25,7 @@
 		static public function find_all($user_id) {
 
 			// Select all entries from the Notes table that belong to a particular user
-			$sql = "SELECT * FROM Notes WHERE user_id = {$user_id}";
+			$sql = "SELECT * FROM Notes WHERE user_id = '{$user_id}'";
 
 			// Run the query above on the db connection
 			$result = self::$db->query($sql);
@@ -59,7 +59,7 @@
 
 			// Update Notes table column & values to include the new user_id column
             $sql = "INSERT INTO Notes (name, body, course_number, user_id)";
-            $sql .= " VALUES ( '{$this->name}','{$this->body}','{$this->course_number}','{$this->user_id}' )";
+            $sql .= " VALUES ('{$this->name}','{$this->body}','{$this->course_number}','{$this->user_id}')";
 
             $result = self::$db->query($sql);
 
@@ -71,8 +71,7 @@
 		// based on the $id parameter we provide
 		static public function find($id, $user_id) {
  
-			$sql = "SELECT * FROM Notes ";
-			$sql .= "WHERE id='{$id}' AND user_id = {$user_id}";
+			$sql = "SELECT * FROM Notes WHERE id='{$id}' AND user_id = '{$user_id}'";
  
 			$result = self::$db->query($sql);
 
