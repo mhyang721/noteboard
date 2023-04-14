@@ -8,14 +8,35 @@
         </div>
 
         <div class="w-full flex-grow flex items-center w-auto">
-            <ul class="list-reset flex justify-end flex-1 items-center">
+        <ul class="list-reset flex justify-end flex-1 items-center">
+
+
+                <li>
+                    <a class="inline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/9 mr-5" href="<?php echo get_public_url('/users/create.php'); ?>">Sign Up</a>
+                </li>
+                <li>
+                    <a class="iinline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/90 mr-5" href="<?php echo get_public_url('/users/login.php'); ?>">Log In</a>
+                </li>
+
+
+
+                <li>
+                    <a class="inline-block py-2 no-underline font-bold text-purple-500 mr-5" href="<?php echo get_public_url('/users/logout.php'); ?>">Log Out</a>
+                </li>                 
+                <li>
+                    <a class="inline-block py-2 no-underline font-bold text-purple-500" href="<?php echo get_public_url('/'); ?>">To-Dos</a>
+                </li>
+                
+
+        </ul>
+            <!-- <ul class="list-reset flex justify-end flex-1 items-center">
                 <li>
                     <a class="inline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/90" href="<?php echo get_public_url('/'); ?>">My Notes</a>
                 </li>
                 <li class="ml-24">
                     <a class="inline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/90" href="<?php echo get_public_url('/notes/create.php'); ?>">New Note</a>
                 </li>
-            </ul>
+            </ul> -->
         </div>
     </nav>
 </div>

@@ -15,6 +15,7 @@
 
     // Require Classes
     require(get_path('app/Classes/Note.php'));
+    require(get_path('/app/Classes/User.php'));
 
     // Connect to the database
     $db = db_connect();
@@ -23,3 +24,4 @@
     // Sets the $db object as a static property of the Note class
     // Allows any method of the Note class to access the database connection
     Note::set_db($db);
+    User::set_db($db);
