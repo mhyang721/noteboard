@@ -31,7 +31,7 @@
                     <a class="inline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/9" href="<?php echo get_public_url('/users/create.php'); ?>">Sign Up</a>
                 </li>
                 <li>
-                    <a class="iinline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/90 ml-12" href="<?php echo get_public_url('/users/login.php'); ?>">Log In</a>
+                    <a class="inline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/90 ml-12" href="<?php echo get_public_url('/users/login.php'); ?>">Log In</a>
                 </li>
 
             <!-- If user is logged in, show Log Out & My Notes in header -->

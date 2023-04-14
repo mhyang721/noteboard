@@ -68,6 +68,11 @@
                         <div class="mb-4">
                             <label class="block text-md font-bold mb-4" for="user_password">Password</label>
                             <input class="shadow border rounded w-full py-2 px-3 text-navy/60" id="user_password" type="password" name="password">
+                        </div>         
+
+                        <div class="mb-4">
+                            <label class="block text-md font-bold mb-4" for="retype_password">Re-type Password</label>
+                            <input class="shadow border rounded w-full py-2 px-3 text-navy/60" id="retype_password" type="password" name="retype_password">
                         </div>                              
                         
                         <button class="bg-turquoise/90 hover:bg-turquoise hover:scale-105 rounded-full py-1 px-4 mt-6 text-white text-lg font-medium" type="submit">Sign Up</button>

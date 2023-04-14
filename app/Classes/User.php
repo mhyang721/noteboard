@@ -10,6 +10,7 @@
         public $name;
         public $email;
         protected $password;
+        protected $retype_password;
 
         // Set errors var
         public $errors;
@@ -28,6 +29,7 @@
             $this->name = $args['name'] ?? NULL;
             $this->email = $args['email'] ?? NULL;
             $this->password = $args['password'] ?? NULL;
+            $this->retype_password = $args['retype_password'] ?? NULL;
 
         }
 
@@ -95,6 +97,12 @@
             if(is_blank($this->password)) {
                 $this->errors[] = "Password cannot be blank";
             }
+
+            // Return error message if password is not equal to re-typed password
+            if($this->password != $this->retype_password) {
+                $this->errors[] = "Passwords must match";
+            }
+            // dd($this->password . $this->password);
 
             // If there are no errors, errors property will be empty
             return empty($this->errors);

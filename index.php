@@ -2,5 +2,5 @@
 
     require('app/init.php');
 
-    // Redirect users to the public site
-    redirect('/');
+    // Redirect users to the login screen
+    redirect('/users/login.php');

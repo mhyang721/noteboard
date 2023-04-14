@@ -68,7 +68,7 @@
                     <!-- Display error message -->
                     <?php echo $session->get_errors_html(); ?>
 
-                    <form action="<?php echo get_public_url('/users/login.php'); ?>" method="POST">
+                    <form id="log-in" action="<?php echo get_public_url('/users/login.php'); ?>" method="POST">
 
                         <div class="mb-4">
                             <label class="block text-md font-bold mb-4" for="user_email">Email</label>
