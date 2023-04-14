@@ -4,7 +4,7 @@
 $(document).ready(function() {
 
     $("#sign-up").validate({
-        errorClass: 'text-red-500',
+        errorClass: 'text-pink',
         rules: {
             // The key is based on the name attribute in the form from 'public > users > create.php'
             email: {
@@ -29,7 +29,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 
     $("#create-note").validate({
-        errorClass: 'text-red-500',
+        errorClass: 'text-pink',
         rules: {
             // The key is based on the name attribute in the form from 'public > users > create.php'
             name: {

@@ -51,11 +51,8 @@
             // Specify data types and variables of the ? above
             $stmt->bind_param('sss', $this->email, $this->name, $hashed_password);
 
-            // Run the statement
-            $stmt->execute();
-
-            // Get the results after statement runs
-            $result = $stmt->get_result();
+            // Execute the statement and store in $result
+            $result = $stmt->execute();
 
             // Return the results
             return $result;

@@ -25,23 +25,23 @@
     <?php require(get_path('public/partials/head.php')); ?>
     <!-- End: Head -->
 
-    <body class="flex flex-col min-h-screen">
+    <body class="flex flex-col min-h-screen mx-14 font-fira bg-navy text-white">
 
         <!-- Global Header -->
         <?php include(get_path('public/partials/header.php')); ?>
-        <!--  End: Global Header -->
+        <!-- End: Global Header -->
 
         <!-- Page Content -->
-        <div class="flex-grow container mx-auto">
-        <div class="max-w-screen-2xl px-8 mx-auto py-20">
+        <div class="flex-grow">
+            <div class="container mx-auto py-16">
 
-            <!-- Index Header -->
-            <div class="grid grid-cols-12 border-b pb-6">
-            <div class="col-span-12 flex items-center">
-                <h1 class="font-bold text-4xl flex-grow">Sign Up</h1>
+            <!-- Header -->
+            <div class="grid grid-cols-12 border-b border-periwinkle pb-6">
+                <div class="col-span-12 flex items-center">
+                    <h1 class="font-bold text-4xl flex-grow">Sign Up</h1>
+                </div>
             </div>
-            </div>
-            <!-- End: Index Header -->
+            <!-- End: Header -->
 
             <!-- Create Form -->
             <div class="grid grid-cols-12 mt-10">
@@ -56,21 +56,21 @@
                         <div class="mb-4">
                             <!-- Label provides context to the form -->
                             <!-- for attribute should be the same as the id attribute of the input to focus the input -->
-                            <label class="block text-sm font-bold mb-2" for="user_email">Email</label>
-                            <input class="shadow border rounded w-full py-2 px-3 text-gray-700" id="user_email" type="email" name="email">
+                            <label class="block text-md font-bold mb-4" for="user_email">Email</label>
+                            <input class="shadow border rounded w-full py-2 px-3 text-navy/60" id="user_email" type="email" name="email">
                         </div>      
                         
                         <div class="mb-4">
-                            <label class="block text-sm font-bold mb-2" for="user_name">Name</label>
-                            <input class="shadow border rounded w-full py-2 px-3 text-gray-700" id="user_name" type="text" name="name">
+                            <label class="block text-md font-bold mb-4" for="user_name">Name</label>
+                            <input class="shadow border rounded w-full py-2 px-3 text-navy/60" id="user_name" type="text" name="name">
                         </div>   
 
                         <div class="mb-4">
-                            <label class="block text-sm font-bold mb-2" for="user_password">Password</label>
-                            <input class="shadow border rounded w-full py-2 px-3 text-gray-700" id="user_password" type="password" name="password">
+                            <label class="block text-md font-bold mb-4" for="user_password">Password</label>
+                            <input class="shadow border rounded w-full py-2 px-3 text-navy/60" id="user_password" type="password" name="password">
                         </div>                              
                         
-                        <button class="bg-emerald-500 rounded-full py-2 px-4 text-white font-bold" type="submit">Sign Up</button>
+                        <button class="bg-turquoise/90 hover:bg-turquoise hover:scale-105 rounded-full py-1 px-4 mt-6 text-white text-lg font-medium" type="submit">Sign Up</button>
 
                     </form>
 

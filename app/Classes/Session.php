@@ -74,7 +74,7 @@
 
             if($this->errors) {
 
-                $html = "<ul class='mb-8 bg-red-500 py-2 px-4 rounded shadow'>";
+                $html = "<ul class='mb-8 bg-pink py-2 px-4 rounded shadow'>";
 
                     foreach($this->errors as $error) {
                         $html .= "<li class='text-white'>{$error}</li>";

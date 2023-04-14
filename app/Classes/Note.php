@@ -72,7 +72,6 @@
             $stmt->bind_param('sssi', $this->name, $this->body, $this->course_number, $this->user_id);
 
             $result = $stmt->execute();
-            // $stmt->get_result();
 
             return $result;
 
@@ -109,7 +108,6 @@
             $stmt->bind_param('sssii', $this->name, $this->body, $this->course_number, $this->id, $this->user_id);
 
 			$result = $stmt->execute();
-            // $stmt->get_result();
 
             return $result;
  
