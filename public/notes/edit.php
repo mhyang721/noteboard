@@ -63,8 +63,8 @@
                 <div class="grid grid-cols-12 border-b pb-6">
                     <div class="col-span-12 flex items-center">
                         <div class="flex-grow">
-                            <p class="text-turquoise mb-6"><a class="text-periwinkle" href="<?php echo get_public_url('/'); ?>">My Notes</a> / <span>Edit Note</span></p>
-                            <h1 class="font-bold text-4xl mt-2">Edit: <?php echo h($note['name']); ?></h1>
+                            <p class="text-turquoise mb-6"><a class="text-periwinkle hover:text-periwinkle/80" href="<?php echo get_public_url('/'); ?>">notes.</a> / <span>edit. <?php echo h($note['name']); ?></span></p>
+                            <h1 class="font-bold text-4xl mt-2">edit. <?php echo h($note['name']); ?></h1>
                         </div>
                     </div>
                 </div>

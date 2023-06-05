@@ -57,8 +57,8 @@
                 <div class="grid grid-cols-12 border-b pb-6">
                     <div class="col-span-12 flex items-center">
                         <div class="flex-grow">
-                            <p class="text-pink mb-6"><a class="text-periwinkle" href="<?php echo get_public_url('/'); ?>">My Notes</a > / <span>Delete Note</span></p>
-                            <h1 class="font-bold text-4xl mt-2">Delete: <?php echo h($note['name']); ?></h1>
+                            <p class="text-turquoise mb-6"><a class="text-periwinkle hover:text-periwinkle/80" href="<?php echo get_public_url('/'); ?>">notes.</a > / <span>delete. <?php echo h($note['name']); ?></span></p>
+                            <h1 class="font-bold text-4xl mt-2">delete. <?php echo h($note['name']); ?></h1>
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                 <div class="grid grid-cols-12 mt-10">
                     <div class="col-span-12">
                         <form action="<?php echo get_public_url('/notes/delete.php?id=' . h($note_record['id'])); ?>" method="POST">
-                            <p class="mb-8">Are you sure you want to delete <strong class="font-bold"><?php echo h($note_record['name']); ?></strong>?</p>
+                            <p class="mb-8">Are you sure you want to delete your note about <strong class="font-bold"><?php echo h($note_record['name']); ?></strong>?</p>
                             <input type="hidden" name="id" value="<?php echo h($note_record['id']); ?>">
                             <button class="bg-pink/90 hover:bg-pink hover:scale-105 rounded-full py-1 px-4 text-white text-lg font-bold">Yes, I'm sure</button>
                         </form>

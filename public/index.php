@@ -33,7 +33,7 @@
                 <!-- Header -->
                 <div class="grid grid-cols-12 border-b border-periwinkle pb-6">
                     <div class="col-span-12 flex items-center">
-                        <h1 class="font-bold text-4xl flex-grow">My Notes</h1>
+                        <h1 class="font-bold text-4xl flex-grow">my notes.</h1>
                         <a class="bg-turquoise/90 hover:bg-turquoise hover:scale-105 rounded-full py-1 px-4 text-white text-lg font-medium" href="<?php echo get_public_url('/notes/create.php'); ?>">Add New</a>
                     </div>
                 </div>

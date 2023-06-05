@@ -56,7 +56,7 @@
             <!-- Header -->
             <div class="grid grid-cols-12 border-b border-periwinkle pb-6">
                 <div class="col-span-12 flex items-center">
-                    <h1 class="font-bold text-4xl flex-grow">Log In</h1>
+                    <h1 class="font-bold text-4xl flex-grow">log in.</h1>
                 </div>
             </div>
             <!-- End: Header -->
@@ -80,7 +80,7 @@
                             <input class="shadow border rounded w-full py-2 px-3 text-navy/60" id="user_password" type="password" name="password">
                         </div>             
                         
-                        <button class="bg-turquoise/90 hover:bg-turquoise hover:scale-105 rounded-full py-1 px-4 mt-6 text-white text-lg font-medium" type="submit">Log In</button>                        
+                        <button class="bg-turquoise/90 hover:bg-turquoise hover:scale-105 rounded-full py-1 px-4 mt-6 text-white text-lg font-medium" type="submit">Log in</button>                        
                     
                     </form>
 

@@ -33,7 +33,7 @@
             <!-- Index Header -->
             <div class="grid grid-cols-12 border-b border-periwinkle pb-6">
                 <div class="col-span-12 flex items-center">
-                    <h1 class="font-bold text-4xl flex-grow">Log Out</h1>
+                    <h1 class="font-bold text-4xl flex-grow">logout.</h1>
                 </div>
             </div>
             <!-- End: Index Header -->

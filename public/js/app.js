@@ -1,6 +1,6 @@
 // jQuery Validation
 
-// Signup validation
+// Sign up validation
 $(document).ready(function() {
 
     $("#sign-up").validate({

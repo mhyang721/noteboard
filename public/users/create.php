@@ -38,7 +38,7 @@
             <!-- Header -->
             <div class="grid grid-cols-12 border-b border-periwinkle pb-6">
                 <div class="col-span-12 flex items-center">
-                    <h1 class="font-bold text-4xl flex-grow">Sign Up</h1>
+                    <h1 class="font-bold text-4xl flex-grow">sign up.</h1>
                 </div>
             </div>
             <!-- End: Header -->
