@@ -1,5 +1,5 @@
 <!-- Tailwind scripts that were separated from the public/index.php file to keep things organized -->
-<script src="https://cdn.tailwindcss.com"></script>
+<!-- <script src="https://cdn.tailwindcss.com"></script> -->
 
 <!-- Added custom colours & Google font -->
 <script>

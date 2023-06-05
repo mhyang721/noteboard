@@ -12,7 +12,7 @@
     <!-- Store the titles in a variable so it will automatically change depending on the page we're on -->
     <title>noteboard. - <?php echo h($title_tag); ?></title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-
+    <link href="../../dist/output.css" rel="stylesheet">
     <!-- tailwindcss -->
     <?php require(get_path('public/partials/tailwind.php')); ?>
 </head>
