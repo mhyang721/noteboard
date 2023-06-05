@@ -66,15 +66,15 @@ function is_post_request() {
 // Database Connection function
 function db_connect() {
 
-    // The variables we need to connect to our database
+    // The variables needed to connect to the database
     $host = "localhost";
     $username = "notes_app_user";
     $password = "!k+Y2J";
     $db_name = "notes_app";
 
     // Built-in function
-    // Creates a new instance of the mysqli class to connect to our database
-    // Passes the variables we defined above as the parameters
+    // Creates a new instance of the mysqli class to connect to the database
+    // Passes the variables defined above as the parameters
     $db = new mysqli($host, $username, $password, $db_name);
 
     // Checks if there are any errors while connecting to the database
@@ -85,8 +85,8 @@ function db_connect() {
         exit();
     }
 
-    // If there are no errors, this creates a connection to our database
+    // If there are no errors, this creates a connection to the database
     return $db;
 
-    // now the $db object can be used to interact with our database
+    // now the $db object can be used to interact with the database
 }

@@ -1,7 +1,5 @@
 <?php
 
-// Michelle Yang (A01300572) Term Project - Note-Taking Application
-
     require('../app/init.php');
     $title_tag = "Notes Application";
 
@@ -46,7 +44,7 @@
                         <!-- fetch_assoc() returns each row of data from the database as an associative array -->
                         <!-- $notes holds the result set or collection of rows -->
                         <!-- $note holds data for each individual row as it is retrieved -->
-                        <!-- All of this is looped to display each entry of the Notes table from our database -->
+                        <!-- All of this is looped to display each entry of the Notes table from the database -->
                     <?php while($note = $notes->fetch_assoc()):
                         require(get_path('public/partials/notes/card.php'));
                     endwhile; ?>

@@ -14,7 +14,7 @@
     // Store the current session user_id in a var
     $user_id = $session->get_user_id();
  
-    // Call our find() method to retrieve the note from our database with the matching id & user_id value
+    // Call the find() method to retrieve the note from the database with the matching id & user_id value
 	$note = Note::find($id, $user_id);
 
     // If the form was submitted using $_POST,
@@ -28,7 +28,7 @@
         // updated data that will be used to update the existing note
         $note = new Note($args);
 
-        // Now we update the existing note
+        // Now update the existing note
         $result = $note->update();
      
         // If note created successful, redirect to homepage

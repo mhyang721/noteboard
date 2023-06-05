@@ -7,7 +7,7 @@
 		// protected = accessible from within the Note class and its subclasses.
 		static protected $db;
  
-		// the columns in our Notes table
+		// the columns in the Notes table
 		public $id;
 		public $name;
 		public $body;
@@ -18,13 +18,13 @@
 		// Set errors var
 		public $errors;
  
-		// Since $db is protected, we add a static public method
+		// Since $db is protected, add a static public method
 		// so that it can be called from outside the class
 		static public function set_db($db) {
 			self::$db = $db;
 		}
 
-		// Returns a results object that we can loop through
+		// Returns a results object that can be looped through
 		static public function find_all($user_id) {
 
 			// Select all entries from the Notes table that belong to a particular user
@@ -59,7 +59,7 @@
 
 		}
 
-		// Method that creates a new record in the Notes table of our database
+		// Method that creates a new record in the Notes table of the database
 		public function create() {
 
 			// If this is not valid, don't run the following password hashing
@@ -77,8 +77,8 @@
 
         }
 
-		// Method that finds a single record from the Notes table of our database
-		// based on the $id parameter we provide
+		// Method that finds a single record from the Notes table of the database
+		// based on the $id parameter provided
 		static public function find($id, $user_id) {
  
 			$sql = "SELECT * FROM Notes WHERE id= ? AND user_id = ?";
@@ -93,7 +93,7 @@
 
 		}
 		
-		// Method that updates a single record in the Notes table of our database
+		// Method that updates a single record in the Notes table of the database
 		// based on the id and user_id
 		public function update() {
 			
@@ -113,7 +113,7 @@
  
 		}
 
-		// Method that deletes a single record from the Notes table of our database
+		// Method that deletes a single record from the Notes table of the database
 		public function delete() {
 
 			$sql = "DELETE FROM Notes WHERE id = ? AND user_id = ? LIMIT 1";
@@ -128,7 +128,6 @@
             return $result;
  
 		}	
-		
 		
         // Validate if email and password are filled in
         public function validate() {

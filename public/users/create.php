@@ -50,7 +50,7 @@
                     <!-- Display error message -->
                     <?php echo $session->get_errors_html(); ?>
 
-                    <!-- Important to use "POST" method as we are sending sensistive data -->
+                    <!-- Important to use "POST" method as sensitive data is being sent -->
                     <form id="sign-up" action="<?php echo get_public_url('/users/create.php'); ?>" method="POST">
                         
                         <div class="mb-4">

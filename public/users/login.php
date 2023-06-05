@@ -5,7 +5,7 @@
     // Check if a post request was sent
     if($_SERVER['REQUEST_METHOD'] === "POST") {
 
-        // See if there is a user with the submitted email in our db
+        // See if there is a user with the submitted email in the database
         $user = User::find_user_by_email($_POST['email']);
 
         // If 1 single user was found, continue to login
@@ -19,7 +19,7 @@
             if($user_obj->validate_password($_POST['password'])) {
 
                 // Call the login method of the session object
-                // This saves the id returned from our $user->fetch_assoc() to the session
+                // This saves the id returned from the $user->fetch_assoc() to the session
                 $session->login($user_obj->id);
 
                 // Redirect to homepage

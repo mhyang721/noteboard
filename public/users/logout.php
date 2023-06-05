@@ -1,18 +1,18 @@
 <?php
 
-  require('../../app/init.php');
+    require('../../app/init.php');
 
-  // Check if user is logged in
-  $session->is_logged_in();
+    // Check if user is logged in
+    $session->is_logged_in();
 
-  if($_SERVER['REQUEST_METHOD'] === "POST") {
+    if($_SERVER['REQUEST_METHOD'] === "POST") {
 
-    // Logout & destroy session info
-    $session->logout();
-    
-    redirect('/users/login.php');
-    
-  }
+        // Logout & destroy session info
+        $session->logout();
+        
+        redirect('/users/login.php');
+        
+    }
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -59,5 +59,4 @@
         <?php include(get_path('public/partials/footer.php')); ?>
 
     </body>
-
 </html>

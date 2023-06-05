@@ -22,39 +22,31 @@
         </div>
 
         <div class="w-full flex-grow flex items-center w-auto">
-        <ul class="list-reset flex justify-end flex-1 items-center">
+            <ul class="list-reset flex justify-end flex-1 items-center">
 
-            <!-- If user is not logged in, show Sign Up & Log In in header -->
-            <?php if(is_null($session->get_user_id())): ?>
+                <!-- If user is not logged in, show Sign Up & Log In in header -->
+                <?php if(is_null($session->get_user_id())): ?>
 
-                <li>
-                    <a class="inline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/9" href="<?php echo get_public_url('/users/create.php'); ?>">Sign Up</a>
-                </li>
-                <li>
-                    <a class="inline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/90 ml-12" href="<?php echo get_public_url('/users/login.php'); ?>">Log In</a>
-                </li>
+                    <li>
+                        <a class="inline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/9" href="<?php echo get_public_url('/users/create.php'); ?>">Sign Up</a>
+                    </li>
+                    <li>
+                        <a class="inline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/90 ml-12" href="<?php echo get_public_url('/users/login.php'); ?>">Log In</a>
+                    </li>
 
-            <!-- If user is logged in, show Log Out & My Notes in header -->
-            <?php else: ?>
+                <!-- If user is logged in, show Log Out & My Notes in header -->
+                <?php else: ?>
 
-                <li>
-                    <a class="inline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/9" href="<?php echo get_public_url('/users/logout.php'); ?>">Log Out</a>
-                </li>                 
-                <li>
-                    <a class="inline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/9 ml-12" href="<?php echo get_public_url('/'); ?>">My Notes</a>
-                </li>
-                
-            <?php endif; ?>
+                    <li>
+                        <a class="inline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/9" href="<?php echo get_public_url('/users/logout.php'); ?>">Log Out</a>
+                    </li>                 
+                    <li>
+                        <a class="inline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/9 ml-12" href="<?php echo get_public_url('/'); ?>">My Notes</a>
+                    </li>
+                    
+                <?php endif; ?>
 
-        </ul>
-            <!-- <ul class="list-reset flex justify-end flex-1 items-center">
-                <li>
-                    <a class="inline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/90" href="<?php echo get_public_url('/'); ?>">My Notes</a>
-                </li>
-                <li class="ml-24">
-                    <a class="inline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/90" href="<?php echo get_public_url('/notes/create.php'); ?>">New Note</a>
-                </li>
-            </ul> -->
+            </ul>
         </div>
     </nav>
 </div>

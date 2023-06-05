@@ -13,11 +13,11 @@
     // Store the current session user_id in a var
     $user_id = $session->get_user_id();
 
-    // Call our find() method to retrieve the note from our database with the matching id value
+    // Call the find() method to retrieve the note from the database with the matching id value
     $note = Note::find($id, $user_id);
     
-    // This $note_record stores the note we intend to delete
-    // with the matching id & user_id value from the Notes table in our database
+    // This $note_record stores the note to be delete
+    // with the matching id & user_id value from the Notes table in the database
     $note_record = Note::find($id, $user_id);
 
     if(is_post_request()) {
@@ -29,7 +29,7 @@
 
         $note = new Note($note_record);
 
-        // Now we delete the existing note
+        // Now delete the existing note
         $note->delete();
 
         // Redirect to the home page

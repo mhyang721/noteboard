@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Store the titles in a variable so it will automatically change depending on the page we are on -->
+    <!-- Store the titles in a variable so it will automatically change depending on the page we're on -->
     <title>MDIA 3294 - <?php echo h($title_tag); ?></title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
