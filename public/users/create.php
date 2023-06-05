@@ -36,8 +36,8 @@
             <div class="container mx-auto py-16">
 
             <!-- Header -->
-            <div class="grid grid-cols-12 border-b border-periwinkle pb-6">
-                <div class="col-span-12 flex items-center">
+            <div class="grid grid-cols-12">
+                <div class="col-span-12 lg:col-start-3 lg:col-span-8 xl:col-start-4 xl:col-span-6 flex items-center border-b border-periwinkle pb-6">
                     <h1 class="font-bold text-4xl flex-grow">sign up.</h1>
                 </div>
             </div>
@@ -45,7 +45,7 @@
 
             <!-- Create Form -->
             <div class="grid grid-cols-12 mt-10">
-                <div class="col-span-12">
+                <div class="col-span-12 lg:col-start-3 lg:col-span-8 xl:col-start-4 xl:col-span-6">
 
                     <!-- Display error message -->
                     <?php echo $session->get_errors_html(); ?>

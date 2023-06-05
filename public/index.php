@@ -31,8 +31,8 @@
             <div class="container mx-auto py-16">
 
                 <!-- Header -->
-                <div class="grid grid-cols-12 border-b border-periwinkle pb-6">
-                    <div class="col-span-12 flex items-center">
+                <div class="grid grid-cols-12">
+                    <div class="col-span-12 lg:col-start-2 lg:col-span-10 flex items-center border-b border-periwinkle pb-6">
                         <h1 class="font-bold text-4xl flex-grow">my notes.</h1>
                         <a class="bg-turquoise/90 hover:bg-turquoise hover:scale-105 rounded-full py-1 px-4 text-white text-lg font-medium" href="<?php echo get_public_url('/notes/create.php'); ?>">Add New</a>
                     </div>
@@ -40,7 +40,7 @@
                 <!-- End: Header -->
 
                 <!-- Index Loop -->
-                <div class="grid gap-6 grid-cols-12 mt-6">
+                <div class="grid gap-6 grid-cols-12 mt-6 lg:px-20 xl:px-28">
                         <!-- fetch_assoc() returns each row of data from the database as an associative array -->
                         <!-- $notes holds the result set or collection of rows -->
                         <!-- $note holds data for each individual row as it is retrieved -->

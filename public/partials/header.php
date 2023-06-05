@@ -7,14 +7,14 @@
             <?php if(is_null($session->get_user_id())): ?>
 
                 <a class="no-underline" href="<?php echo get_public_url('/users/login.php'); ?>">
-                    <span class="text-2xl font-bold text-pink">noteboard.</span>
+                    <span class="text-2xl font-bold text-periwinkle hover:text-periwinkle/80">noteboard.</span>
                 </a>
 
             <!-- If user is logged in, clicking the logo will the user to their notes -->
             <?php else: ?>
 
                 <a class="no-underline" href="<?php echo get_public_url('/'); ?>">
-                    <span class="text-2xl font-bold text-pink">noteboard.</span>
+                    <span class="text-2xl font-bold text-periwinkle hover:text-periwinkle/80">noteboard.</span>
                 </a>
 
             <?php endif; ?>
@@ -28,17 +28,17 @@
                 <?php if(is_null($session->get_user_id())): ?>
 
                     <li>
-                        <a class="inline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/80" href="<?php echo get_public_url('/users/create.php'); ?>">sign up.</a>
+                        <a class="inline-block py-2 no-underline font-bold text-pink hover:text-pink/80" href="<?php echo get_public_url('/users/create.php'); ?>">sign up.</a>
                     </li>
                     <li>
-                        <a class="inline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/80 ml-12" href="<?php echo get_public_url('/users/login.php'); ?>">log in.</a>
+                        <a class="inline-block py-2 no-underline font-bold text-pink hover:text-pink/80 ml-12" href="<?php echo get_public_url('/users/login.php'); ?>">log in.</a>
                     </li>
 
                 <!-- If user is logged in, show Log Out & My Notes in header -->
                 <?php else: ?>
 
                     <li>
-                        <a class="inline-block py-2 no-underline font-bold text-periwinkle hover:text-periwinkle/80" href="<?php echo get_public_url('/users/logout.php'); ?>">logout.</a>
+                        <a class="inline-block py-2 no-underline font-bold text-pink hover:text-pink/80" href="<?php echo get_public_url('/users/logout.php'); ?>">logout.</a>
                     </li>                 
                     
                 <?php endif; ?>

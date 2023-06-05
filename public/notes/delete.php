@@ -54,8 +54,9 @@
 
             <div class="container mx-auto py-16">
 
-                <div class="grid grid-cols-12 border-b pb-6">
-                    <div class="col-span-12 flex items-center">
+                <!-- Delete Header -->
+                <div class="grid grid-cols-12">
+                    <div class="col-span-12 lg:col-start-3 lg:col-span-8 xl:col-start-4 xl:col-span-6 flex items-center border-b pb-6">
                         <div class="flex-grow">
                             <p class="text-turquoise mb-6"><a class="text-periwinkle hover:text-periwinkle/80" href="<?php echo get_public_url('/'); ?>">notes.</a > / <span>delete. <?php echo h($note['name']); ?></span></p>
                             <h1 class="font-bold text-4xl mt-2">delete. <?php echo h($note['name']); ?></h1>
@@ -66,7 +67,7 @@
 
                 <!-- Delete Form -->
                 <div class="grid grid-cols-12 mt-10">
-                    <div class="col-span-12">
+                    <div class="col-span-12 lg:col-start-3 lg:col-span-8 xl:col-start-4 xl:col-span-6">
                         <form action="<?php echo get_public_url('/notes/delete.php?id=' . h($note_record['id'])); ?>" method="POST">
                             <p class="mb-8">Are you sure you want to delete your note about <strong class="font-bold"><?php echo h($note_record['name']); ?></strong>?</p>
                             <input type="hidden" name="id" value="<?php echo h($note_record['id']); ?>">

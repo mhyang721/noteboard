@@ -1,5 +1,5 @@
 <!-- Looped card that was separated from the public/index.php file to keep things organized -->
-<article class="col-span-12 md:col-span-6 lg:col-span-4">
+<article class="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-4">
     <div class="rounded overflow-hidden shadow-lg border border-pink bg-periwinkle/10">
         <div class="px-6 py-6">
             <!-- <div class="flex items-center"> -->
