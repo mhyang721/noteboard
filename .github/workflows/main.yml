@@ -16,4 +16,4 @@ jobs:
       with:
         server: ftp.michelle-yang.co
         username: noteboard-ftp@noteboard.michelle-yang.co
-        password: ${{ secrets.ftp_password }}
+        password: ${{ secrets.noteboard_ftp_password }}
