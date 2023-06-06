@@ -37,7 +37,7 @@
         public function create() {
 
             // If this is not valid, don't run the following password hashing
-            if(!$this->validate()) return false;
+            if(!$this->validate()) {return false;}
 
             // Create an encrypted password based on a hashing algorithm that only goes one way
             // PASSWORD_DEFAULT is bcrypt
@@ -53,10 +53,10 @@
             // Specify data types and variables of the ? above
             $stmt->bind_param('sss', $this->email, $this->name, $hashed_password);
 
-            // Execute the statement and store in $result
-            $result = $stmt->execute();
+            // Run the statement
+            $stmt->execute();
 
-            // Return the results
+            // Send back the above
             return $result;
 
         }

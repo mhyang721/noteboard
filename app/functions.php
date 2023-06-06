@@ -66,16 +66,9 @@ function is_post_request() {
 // Database Connection function
 function db_connect() {
 
-    // The variables needed to connect to the database
-    $host = "localhost";
-    $username = "notes_app_user";
-    $password = "!k+Y2J";
-    $db_name = "notes_app";
-
     // Built-in function
     // Creates a new instance of the mysqli class to connect to the database
-    // Passes the variables defined above as the parameters
-    $db = new mysqli($host, $username, $password, $db_name);
+    $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
 
     // Checks if there are any errors while connecting to the database
     // exit() is a built-in function that prints a message to the screen and

@@ -2,16 +2,16 @@
 
     // Start Output Buffering
     ob_start();
-    
+
     // Define Path Constants
-    define('WWW_ROOT', 'http://localhost:8888');
+    define('WWW_ROOT', 'https://noteboard.michelle-yang.co');
     define('PROJECT_ROOT', dirname(__DIR__, 1));
 
     // Define Database Constants
-    // define('DB_HOST', 'localhost');
-    // define('DB_USER', 'root');
-    // define('DB_PASS', 'root');
-    // define('DB_DATABASE', 'notes_app');
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'michuebl_noteboard_user');
+    define('DB_PASS', 'Fyb%ZLrC2!9?');
+    define('DB_DATABASE', 'michuebl_noteboard_app');
 
     // Include Functions
     require('functions.php');
