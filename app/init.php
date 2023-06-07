@@ -9,8 +9,8 @@
 
     // Define Database Constants
     define('DB_HOST', 'localhost');
-    define('DB_USER', 'michuebl_noteboard_user');
-    define('DB_PASS', 'Fyb%ZLrC2!9?');
+    define('DB_USER', 'michuebl_noteboard_app_user');
+    define('DB_PASS', '#36j1-,8b;=5');
     define('DB_DATABASE', 'michuebl_noteboard_app');
 
     // Include Functions
