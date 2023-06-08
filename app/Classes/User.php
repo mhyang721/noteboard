@@ -54,7 +54,7 @@
             $stmt->bind_param('sss', $this->email, $this->name, $hashed_password);
 
             // Run the statement
-            $stmt->execute();
+            $result = $stmt->execute();
 
             // Send back the above
             return $result;
