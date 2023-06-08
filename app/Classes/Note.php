@@ -28,7 +28,7 @@
 		static public function find_all($user_id) {
 
 			// Select all entries from the Notes table that belong to a particular user
-			$sql = "SELECT * FROM Notes WHERE user_id = ?";
+			$sql = "SELECT * FROM notes WHERE user_id = ?";
 
 			$stmt = self::$db->prepare($sql);
             $stmt->bind_param('i', $user_id);
@@ -66,7 +66,7 @@
             if(!$this->validate()) return false;
 
 			// Update Notes table column & values to include the new user_id column
-            $sql = "INSERT INTO Notes (name, body, course_number, user_id) VALUES (?, ?, ?, ?)";
+            $sql = "INSERT INTO notes (name, body, course_number, user_id) VALUES (?, ?, ?, ?)";
 
             $stmt = self::$db->prepare($sql);
             $stmt->bind_param('sssi', $this->name, $this->body, $this->course_number, $this->user_id);
@@ -81,7 +81,7 @@
 		// based on the $id parameter provided
 		static public function find($id, $user_id) {
  
-			$sql = "SELECT * FROM Notes WHERE id= ? AND user_id = ?";
+			$sql = "SELECT * FROM notes WHERE id= ? AND user_id = ?";
  
 			$stmt = self::$db->prepare($sql);
             $stmt->bind_param('ii', $id, $user_id);
@@ -102,7 +102,7 @@
 
 			// LIMIT 1 is a clause added to limit the update to only one record
 			// It is a fallback if you forget the WHERE clause
-			$sql = "UPDATE Notes SET name = ?, body = ?, course_number = ? WHERE id = ? AND user_id = ? LIMIT 1";
+			$sql = "UPDATE notes SET name = ?, body = ?, course_number = ? WHERE id = ? AND user_id = ? LIMIT 1";
 
 			$stmt = self::$db->prepare($sql);
             $stmt->bind_param('sssii', $this->name, $this->body, $this->course_number, $this->id, $this->user_id);
@@ -116,7 +116,7 @@
 		// Method that deletes a single record from the Notes table of the database
 		public function delete() {
 
-			$sql = "DELETE FROM Notes WHERE id = ? AND user_id = ? LIMIT 1";
+			$sql = "DELETE FROM notes WHERE id = ? AND user_id = ? LIMIT 1";
 			
 			$stmt = self::$db->prepare($sql);
             $stmt->bind_param('ii', $this->id, $this->user_id);

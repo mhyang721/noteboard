@@ -44,7 +44,7 @@
             $hashed_password = password_hash($this->password, PASSWORD_DEFAULT);
 
             // ? = values to be replaced
-            $sql = "INSERT INTO Users (email, name, password) VALUES (?, ?, ?)";
+            $sql = "INSERT INTO users (email, name, password) VALUES (?, ?, ?)";
 
             // Prepare the sql statement above to be executed (have the ? replaced)
             $stmt = self::$db->prepare($sql);
@@ -64,7 +64,7 @@
         // Read: Search the db for a user by email
         static public function find_user_by_email($email) {
 
-            $sql = "SELECT * FROM Users WHERE email=?";
+            $sql = "SELECT * FROM users WHERE email=?";
 
             $stmt = self::$db->prepare($sql);
             $stmt->bind_param('s', $email);
