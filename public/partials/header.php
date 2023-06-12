@@ -21,8 +21,8 @@
 
         </div>
 
-        <div class="w-full flex-grow flex items-center w-auto">
-            <ul class="list-reset flex justify-end flex-1 items-center">
+        <div class="sm:w-full sm:flex-grow flex items-end w-auto">
+            <ul class="list-reset flex flex-col items-end sm:flex-row sm:justify-end sm:flex-1 sm:items-center">
 
                 <!-- If user is not logged in, show Sign Up & Log In in header -->
                 <?php if(is_null($session->get_user_id())): ?>

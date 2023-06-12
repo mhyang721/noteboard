@@ -32,9 +32,9 @@
 
                 <!-- Header -->
                 <div class="grid grid-cols-12">
-                    <div class="col-span-12 lg:col-start-2 lg:col-span-10 flex items-center border-b border-periwinkle pb-6">
+                    <div class="col-span-12 lg:col-start-2 lg:col-span-10 flex flex-col sm:flex-row items-start sm:items-center border-b border-periwinkle pb-6">
                         <h1 class="font-bold text-4xl flex-grow">my notes.</h1>
-                        <a class="bg-turquoise/90 hover:bg-turquoise hover:scale-105 rounded-full py-1 px-4 text-white text-lg font-medium" href="<?php echo get_public_url('/notes/create.php'); ?>">Add New</a>
+                        <a class="bg-turquoise/90 hover:bg-turquoise hover:scale-105 rounded-full py-1 px-4 mt-4 sm:mt-0 text-white text-lg font-medium" href="<?php echo get_public_url('/notes/create.php'); ?>">Add New</a>
                     </div>
                 </div>
                 <!-- End: Header -->
