@@ -49,10 +49,7 @@
 			// if $args['id'] does not exist, id of the new Note instance will be null
 			$this->id = $args['id'] ?? NULL;
 			$this->name = $args['name'] ?? NULL;
-			// mysqli_escape_string is a prebuilt function that is used to modify a string value
-			// It allows special characters to be interpreted as part of the string
-			// so that things like apostrophes don't cause syntax errors in the SQL query
-			$this->body = mysqli_escape_string(self::$db, $args['body']) ?? NULL;
+			$this->body = $args['body'] ?? NULL;
 			$this->course_number = $args['course_number'] ?? NULL;
 			// add user_id to constructor
 			$this->user_id = $args['user_id'] ?? NULL;
